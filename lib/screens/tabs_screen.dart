@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/filters_provider.dart';
+import '../providers/meals_provider.dart';
 
 const kInitialFilters = {
   Filter.gluttenFree: false,
@@ -45,7 +46,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final availableMeals = ref.watch(filterMealsProvider);
-
     Widget activeScreen = CategoriesScreen(
       availableMeals: availableMeals,
     );
