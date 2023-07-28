@@ -38,9 +38,17 @@ class MealDetailScreen extends ConsumerWidget {
                   .toggleFavoriteMealStatus(meal);
               _showInfoMessage(context, isAdded);
             },
-            icon: Icon(
-              isFav ? Icons.star : Icons.star_border,
-              color: Colors.orangeAccent,
+            icon: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: ((child, animation) => RotationTransition(
+                    turns: Tween(begin: 0.8, end: 1.0).animate(animation),
+                    child: child,
+                  )),
+              child: Icon(
+                isFav ? Icons.star : Icons.star_border,
+                color: Colors.orangeAccent,
+                key: ValueKey(isFav),
+              ),
             ),
           ),
         ],
